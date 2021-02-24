@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+chromium --kiosk --noerrdialogs --disable-translate --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --start-fullscreen --user-agent="Mozilla/5.0 (X11; Linux i686) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.77 Large Screen Safari/534.24 GoogleTV/092754" youtube.com/tv#
+
+

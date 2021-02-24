@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Asignando puerto por defecto
+port="3000"
+
+ if [[ -n $1 ]]; then
+	 echo "Puerto ${1} seleccionado"
+	 port=$1
+ else
+	 echo "Sin puerto seleccionado. Utilizando puerto por defecto ${port}"
+ fi
+
+ssh -i ~/.ssh/id_rsatest -N -R 80:localhost:$port root@test.danyael.xyz
+echo "Enlace terminado"
