@@ -1,4 +1,5 @@
 #!/bin/env bash
+# Script to sync books between PC and phone through kde connect
 
 device_id=$( kdeconnect-cli -a --id-name-only | rofi -dmenu -show window | cut -d ' ' -f1 | tr -d '\n' )
 
