@@ -5,4 +5,5 @@ emoticon=$( cat ~/.config/empicker/empicker_emojis | rofi -dmenu -show window | 
 
 if [[ -n $emoticon ]] ; then
 	echo -n $emoticon | xclip -i -selection c
+  xdotool type "$emoticon"
 fi
