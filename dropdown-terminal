@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+dropdown_window_id=$( xdotool search --classname dropdown )
+
+if [[ -z $dropdown_window_id ]] ; then
+  nohup alacritty --class dropdown > /dev/null 2>&1 &
+fi
