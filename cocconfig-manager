@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+NVIM_CONFIG_FOLDER="${HOME}/.config/nvim" && \
+  [[ -n $XDG_CONFIG_HOME ]] && \
+  NVIM_CONFIG_FOLDER="${XDG_CONFIG_HOME}/nvim"
+
+COC_SETTINGS_FOLDER="${NVIM_CONFIG_FOLDER}/coc-settings"
+
+function isConfigValid() {
+  conf_name=$1
+
+  conf_dir="${COC_SETTINGS_FOLDER}/${conf_name}"
+  
+  [[ -d $conf_dir ]] && return 0 || return 1
+}
+
+function helpUsage() {
+  echo '
+cocconfig-manager
+
+Script para administrar la configuración del plugin neoclide/coc.nvim 
+
+commands:
+  switch    Cambia la configuración actual por otra.
+'
+}
+
+function switchToConfig() {
+  conf_name="$1"
+  
+  if isConfigValid $conf_name ; then
+
+    
+    [[ -e "$NVIM_CONFIG_FOLDER/coc-settings.json" ]] && \
+      rm "$NVIM_CONFIG_FOLDER/coc-settings.json"
+
+    cp "$COC_SETTINGS_FOLDER/$conf_name/coc-settings.json" "$NVIM_CONFIG_FOLDER/" 
+
+    return  0
+  fi
+
+  echo "Configuración no válida"
+
+  return 1
+}
+
+
+
+case "$1" in
+  switch | s)
+    switchToConfig "$2"
+    ;;
+
+  * )
+    helpUsage
+    ;;
+esac
+
