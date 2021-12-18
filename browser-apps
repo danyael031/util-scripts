@@ -1,0 +1,21 @@
+#!/bin/env bash
+
+declare -A apps_urls=(
+["Disney+"]="https://www.disneyplus.com/"
+["Prime Video"]="https://www.primevideo.com/"
+["Star Plus"]="https://www.starplus.com/"
+["Netflix"]="https://www.netflix.com/"
+)
+
+get_app_names(){
+  for key in "${!apps_urls[@]}" ; do
+    echo "$key"
+  done
+} 
+
+selected_app=$( get_app_names | rofi -dmenu -show window )
+
+app_url="${apps_urls[$selected_app]}"
+
+
+brave --noerrdialogs --disable-translate --new-window --fast --fast-start --disable-infobars --disable-features=TranslateUI --app=$app_url
