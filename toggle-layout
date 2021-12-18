@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+current_layout=$( setxkbmap -query | grep layout | cut -d ' ' -f6 )
+
+if [[ $current_layout == "eu" ]] ; then
+  setxkbmap -model pc105 -layout latam
+  notify-send -t 2000 "keyboard" "Cambiando layout a latam"
+else
+  setxkbmap -model pc105 -layout eu
+  notify-send -t 2000 "keyboard" "Cambiando layout a eu"
+fi
+
