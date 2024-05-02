@@ -10,5 +10,5 @@ port="3000"
 	 echo "Sin puerto seleccionado. Utilizando puerto por defecto ${port}"
  fi
 
-ssh -i ~/.ssh/id_rsatest -N -R 80:localhost:$port root@test.danyael.xyz
+ssh -i ~/.ssh/id_portfowradingtest -N -R 8001:localhost:$port test@danyael.xyz
 echo "Enlace terminado"
